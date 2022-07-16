@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const isNotActiveStyle = 'flex items-center px-3 py-2 gap-3 font-semibold text-base text-white transition-all duration-200 ease-in-out capitalize'
-const isActiveStyle = 'flex items-center px-3 py-2 gap-3 font-semibold text-base text-secondaryColor-100 transition-all duration-200 ease-in-out capitalize'
+const isNotActiveStyle = 'flex items-center p-3 gap-3 font-semibold text-lg md:text-base text-white transition-all duration-200 ease-in-out capitalize'
+const isActiveStyle = 'flex items-center p-3 gap-3 font-semibold text-lg md:text-base text-secondaryColor-100 transition-all duration-200 ease-in-out capitalize'
 
 const NavMenu = ({ closeToggle }) => {
   const handleCloseSideBar = () => { 

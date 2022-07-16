@@ -21,7 +21,8 @@ module.exports = {
         300: '300px',
         340: '340px',
         350: '350px',
-        656: '656px',
+        400: '400px',
+        500: '500px',
         880: '880px',
         1200: '1200px',
         1400: '1400px',
@@ -34,13 +35,14 @@ module.exports = {
       height: {
         50: '50px',
         65: '65px',
-        340: '340px',
+        320: '320px',
         380: '380px',
         400: '400px',
         450: '450px',
         600: '600px',
         685: '685px',
         800: '800px',
+        '80vh': '80vh',
         '90vh': '90vh',
       },
       backgroundPosition: {
@@ -54,6 +56,10 @@ module.exports = {
       },
       maxWidth: {
         "mx-8": "calc(100% - 32px)",
+        "vw": "calc(100vw - 32px)",
+      },
+      top: {
+        "50p": '50%'
       },
       textColor: {
         lightGray: '#F1EFEE',
@@ -104,7 +110,7 @@ module.exports = {
         },
       },
       animation: {
-        'slide-in': 'slide-in 0.5s ease-out',
+        'slide-in': 'slide-in 0.4s ease-out',
         'loading': 'loading 0.6s linear infinite alternate',
         'fade-in': ' fade-in 0.4s ease-in',
       },

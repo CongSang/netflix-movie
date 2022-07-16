@@ -3,10 +3,10 @@ import { useStore } from "../store/stored"
 import { Navigate, useLocation } from "react-router-dom"
 
 const PrivateRoute = ({ children }) => {
-  const user = useStore((state) => state.user)
+  const currentUser = useStore((state) => state.currentUser)
   const location = useLocation()
 
-  if (!user) {
+  if (!currentUser) {
     return (
       <Navigate
         to={`/login?redirect=${encodeURIComponent(location.pathname)}`}

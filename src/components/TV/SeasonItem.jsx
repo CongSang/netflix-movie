@@ -29,7 +29,7 @@ const SeasonItem = ({ item, seasonCurrent, setSeasonCurrent, id }) => {
 				}
 			}}
 			ref={seasonRef}
-			className="flex flex-col w-full mt-2 lg:mt-0"
+			className="flex flex-col w-full mt-2 lg:mt-0 cursor-pointer"
 		>
 			<div className="flex flex-row w-full bg-[#222]">
 				<img

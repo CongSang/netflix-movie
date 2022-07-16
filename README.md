@@ -8,6 +8,7 @@ Live demo: [https://netflix-hncs.netlify.app/](https://netflix-hncs.netlify.app/
 
 - Login with Google
 - Watch movies, tv_shows
+- Search by search term
 
 ### Clone project
 

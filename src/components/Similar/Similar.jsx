@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Navigation } from "swiper"
 import { Link, useParams } from "react-router-dom"
-import "swiper/css";
+import "swiper/css"
+import "swiper/css/navigation"
 
 import useInnerWidth from "../../hooks/useInnerWidth"
 import { API_KEY, BASE_URL } from "../../utils/constant"

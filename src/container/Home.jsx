@@ -9,14 +9,16 @@ import Movies from './Movies'
 import TvShows from './TvShows'
 import Favorite from './Favorite'
 import Search from './Search'
+import Result from './Result'
 import Spinner from '../components/Spinner'
 import Detail from './Detail'
 import WatchMovie from './Watch/WatchMovie'
 import WatchTV from './Watch/WatchTV'
+import ViewMore from './ViewMore'
+import PrivateRoute from './PrivateRoute'
 
 const Home = () => {
   const currentUser = useStore(state => state.currentUser)
-  const [searchTerm, setSearchTerm] = useState('')
   const location = useLocation()
 
   useEffect(() => {
@@ -27,17 +29,26 @@ const Home = () => {
 
   return (
     <div>
-        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} currentUser={currentUser} />
+        <Header currentUser={currentUser} />
 
         <Routes>
           <Route path='/*' element={<HomeContent />} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/tv_shows' element={<TvShows />} />
-          <Route path='/favorites' element={<Favorite />} />
-          <Route path='/search' element={<Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />} />
+          <Route 
+            path='/favorites' 
+            element={
+              <PrivateRoute>
+                <Favorite />
+              </PrivateRoute>
+            } 
+          />
+          <Route path='/search' element={<Search />} />
+          <Route path='/results' element={<Result />} />
           <Route path='/details/:media_type/:id' element={<Detail currentUser={currentUser} />} />
           <Route path='/watch/movie/:id' element={<WatchMovie />} />
           <Route path='/watch/tv/:id/season/:season/esp/:esp' element={<WatchTV />} />
+          <Route path='/:media_type/:type' element={<ViewMore />} />
         </Routes>
 
         <Footer />

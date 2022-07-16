@@ -2,7 +2,7 @@ import React from 'react'
 import StarRatings from 'react-star-ratings'
 import { Link } from 'react-router-dom'
 
-import ButtonCustom from './ButtonCustom'
+import ButtonCustom from './Button/ButtonCustom'
 
 const BannerDetail = ({ id, media_type, data, loading, currentUser }) => {
   return (
@@ -33,10 +33,10 @@ const BannerDetail = ({ id, media_type, data, loading, currentUser }) => {
 									? `Release date: ${data.release_date}`
 									: `Last episode: ${data.last_air_date}`}
 							</p>
-              <div className="flex my-5 flex-wrap">
+              <div className="flex my-2 flex-wrap">
                 {data.genres &&
                   data.genres.map((item) => (
-                    <div className='mr-4'>
+                    <div className='my-3 mr-4'>
 											<ButtonCustom  
 												key={item.id}
 												content={item.name}

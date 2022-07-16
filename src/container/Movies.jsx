@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Link } from 'react-router-dom'
-import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
 
 import Title from '../components/Title'
-import MovieItem from '../components/Movie/MovieItem'
 import { API_KEY, BASE_URL } from '../utils/constant'
-import LoadItem from '../components/Movie/LoadItem'
+import GridItemLayout from '../components/GridItemLayout'
+import BtnScrollTop from '../components/Button/BtnScrollTop'
 
 const Movies = () => {
   const [page, setPage] = useState(1)
@@ -47,41 +45,7 @@ const Movies = () => {
   return (
     <div className='w-1200 max-w-mx-8 mt-24 mb-12 mx-auto'>
       <Title title='Netflix | Movies' />
-      <div className='grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
-        {!loading ? (
-          movies?.map((item, index) => (
-            <Link
-              key={index}
-              to={`/details/movie/${item.id}`}
-            >
-              <MovieItem data={item} />
-            </Link>
-          ))
-        ) : (
-          <>
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-            <LoadItem />
-          </>
-        )}
-      </div>
+      <GridItemLayout data={movies} loading={loading} media_type="movie" />
 
       {page < totalPages ? (
         <div className="flex justify-center items-center">
@@ -94,12 +58,7 @@ const Movies = () => {
         </div>
       ) : null}
 
-      <div 
-        className='fixed bottom-20 right-5 flex justify-center items-center z-10 w-12 h-12 bg-secondaryColor-100 opacity-70 text-md text-white rounded-full outline-none'
-        onClick={scrollTop}  
-      >
-        <MdOutlineKeyboardArrowUp fontSize={30} />
-      </div>
+      <BtnScrollTop scrollTop={scrollTop} />
     </div>
   )
 }

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import "swiper/css"
+import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from "swiper/react"
-import SwiperCore, { Navigation, Autoplay } from "swiper"
+import SwiperCore, { Navigation, Controller } from "swiper"
 import { Link } from 'react-router-dom'
 
 import MovieItem from './Movie/MovieItem'
 import useInnerWidth from '../hooks/useInnerWidth'
 import { API_KEY, BASE_URL } from '../utils/constant'
-import ButtonCustom from './ButtonCustom'
+import ButtonCustom from './Button/ButtonCustom'
+import LoadItem from './Movie/LoadItem';
 
 const SliderTV = ({ type, cate }) => {
-  SwiperCore.use([Navigation, Autoplay])
+  SwiperCore.use([Navigation, Controller])
 	const [movie, setMovie] = useState([])
 	const [loading, setLoading] = useState(false)
 	const width = useInnerWidth()
@@ -58,16 +60,13 @@ const SliderTV = ({ type, cate }) => {
         </Link>
       </div>
       <Swiper
-        navigation
+        navigation={true}
         grabCursor={true}
         spaceBetween={14}
         slidesPerView={item}
-				autoplay={{
-					"delay": 4000,
-					"disableOnInteraction": false,
-				}}
+        loop={true}
       >
-        {!loading && (
+        {!loading ? (
           movie.map((item) => (
             <SwiperSlide key={item.id}>
               <Link to={`/details/${cate}/${item.id}`}>
@@ -75,6 +74,14 @@ const SliderTV = ({ type, cate }) => {
               </Link>
             </SwiperSlide>
           ))
+        ) : (
+          <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <LoadItem />
+            <LoadItem />
+            <LoadItem />
+            <LoadItem />
+            <LoadItem />
+          </div>
         )}
       </Swiper>
     </div>

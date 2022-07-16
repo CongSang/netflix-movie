@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { HiMenu } from 'react-icons/hi'
 import { IoIosCloseCircle, IoMdSearch } from 'react-icons/io'
+import { BiSearchAlt2 } from 'react-icons/bi'
 
 import { useStore } from "../../store/stored";
 import logo from '../../assets/logo-full.png'
@@ -10,7 +11,7 @@ import nlogo from '../../assets/logo.png'
 import NavMenu from './NavMenu'
 import NavUser from './NavUser'
 
-const Header = ({ searchTerm, setSearchTerm, currentUser }) => {
+const Header = ({ currentUser }) => {
   const [toggleSideBar, setToggleSideBar] = useState(false)
   const navigate = useNavigate()
   const headerRef = useRef()
@@ -51,17 +52,12 @@ const Header = ({ searchTerm, setSearchTerm, currentUser }) => {
           </div>
         </div>
         <div className='flex flex-row items-center justify-center'>
-          <div className='flex justify-start items-center lg:w-300 w-40 px-2 opacity-60 rounded-md bg-[#434a53] border-none outline-none focus-within:shadow-sm mr-5'>
-            <IoMdSearch fontSize={21} className='ml-1' />
-            <input 
-              type='text'
-              onChange={e => setSearchTerm(e.target.value)}
-              placeholder='Search'
-              value={searchTerm} 
-              onFocus={() => navigate('/search')}
-              className='p-2 w-full bg-[#434a53] outline-none'
-            />
-          </div>
+          <Link
+            to='/search'
+            className='mr-2 text-secondaryColor-100'
+          >
+            <BiSearchAlt2 fontSize={36} />
+          </Link>
           {currentUser ? (
             <NavUser currentUser={currentUser && currentUser} />
           ) : (
@@ -81,19 +77,25 @@ const Header = ({ searchTerm, setSearchTerm, currentUser }) => {
 
         <Link
           to="/"
-          className='flex px-3 gap-2 w-190 items-center justify-center'
+          className='flex px-3 w-190 items-center justify-center'
         >
           <img src={logo} alt="logo" className='w-32' />
         </Link>
-        <div>
+        <div className='flex justify-center items-center'>
+          <Link
+            to='/search'
+            className='mr-2 text-secondaryColor-100'
+          >
+            <BiSearchAlt2 fontSize={36} />
+          </Link>
           {currentUser ? (
             <NavUser currentUser={currentUser && currentUser} />
           ) : (
-            <div className='px-4 py-2 bg-secondaryColor-100 rounded-md'>
+            <div className='p-2 bg-secondaryColor-100 rounded-md'>
               <Link
                 to="/login"
               >
-                Sign in
+                Login
               </Link>
             </div>
           )}
@@ -112,17 +114,6 @@ const Header = ({ searchTerm, setSearchTerm, currentUser }) => {
             </Link>
             <div className='ml-2'>
               <NavMenu closeToggle={setToggleSideBar} />
-            </div>
-            <div className='flex items-center w-4/5 px-2 rounded-md bg-primary-100 border-none outline-none focus-within:shadow-sm mt-6 mx-4'>
-              <IoMdSearch fontSize={21} className='ml-1' />
-              <input 
-                type='text'
-                onChange={e => setSearchTerm(e.target.value)}
-                placeholder='Search'
-                value={searchTerm} 
-                onFocus={() => navigate('/search')}
-                className='p-2 w-full bg-primary-100 outline-none'
-              />
             </div>
           </div>
         )}

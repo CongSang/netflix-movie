@@ -10,6 +10,7 @@ import SimilarWatch from '../../components/Similar/SimilarWatch'
 const WatchMovie = () => {
   const { id } = useParams();
   const [info, setInfo] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const getInfo = (id) => {
@@ -19,6 +20,19 @@ const WatchMovie = () => {
     };
 
     getInfo(id);
+  }, [id]);
+
+  useEffect(() => {
+    const getSimilar = (id) => {
+      fetch(`${BASE_URL}/movie/${id}/similar?api_key=${API_KEY}`)
+        .then((res) => res.json())
+        .then((data) => setData(data.results))
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    getSimilar(id);
   }, [id]);
 
   return (
@@ -32,8 +46,8 @@ const WatchMovie = () => {
         </div>
         <div className="lg:w-28p w-full">
           <h1 className="text-white text-lg">Similar</h1>
-          <div>
-            <SimilarWatch />
+          <div className="h-screen scrollbar-hide overflow-y-auto rounded-sm">
+            <SimilarWatch data={data} />
           </div>
         </div>
       </div>
