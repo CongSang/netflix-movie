@@ -17,9 +17,11 @@ const MovieItem = ({ data }) => {
         className='w-full object-cover h-full group-hover:brightness-75'
       />
         
-      <p className="p-2 text-white text-sm bg-[#222] h-50 rounded-b-lg group-hover:text-[#e74c3c] line-clamp-1">
-        {data.title ? data.title : data.name}
-      </p>
+      <div className='p-2 text-white text-sm bg-[#222] h-50 rounded-b-lg'>
+        <p className="group-hover:text-[#e74c3c] line-clamp-1">
+          {data.title ? data.title : data.name}
+        </p>
+      </div>
     </div>
   )
 }

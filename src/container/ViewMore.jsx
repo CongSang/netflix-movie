@@ -57,7 +57,7 @@ const ViewMore = () => {
 
   return (
     <div className='w-1200 max-w-mx-8 mt-24 mb-12 mx-auto'>
-      <Title title={`${media_type} | ${type}`} />
+      <Title title={`${media_type.toUpperCase()} | ${type.toUpperCase()}`} />
 
       <h1 className='text-white text-2xl font-medium capitalize mb-5'>{media_type} {type === "top_rated" ? "top rate" : type}</h1>
       <GridItemLayout data={movies} loading={loading} media_type={media_type}/>

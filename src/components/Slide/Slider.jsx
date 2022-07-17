@@ -5,13 +5,13 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Navigation, Controller } from "swiper"
 import { Link } from 'react-router-dom'
 
-import MovieItem from './Movie/MovieItem'
-import useInnerWidth from '../hooks/useInnerWidth'
-import { API_KEY, BASE_URL } from '../utils/constant'
-import ButtonCustom from './Button/ButtonCustom'
-import LoadItem from './Movie/LoadItem';
+import MovieItem from '../Movie/MovieItem'
+import useInnerWidth from '../../hooks/useInnerWidth'
+import { API_KEY, BASE_URL } from '../../utils/constant'
+import ButtonCustom from '../Button/ButtonCustom'
+import LoadItem from '../Movie/LoadItem';
 
-const SliderTV = ({ type, cate }) => {
+const Slider = ({ type, cate }) => {
   SwiperCore.use([Navigation, Controller])
 	const [movie, setMovie] = useState([])
 	const [loading, setLoading] = useState(false)
@@ -56,7 +56,7 @@ const SliderTV = ({ type, cate }) => {
       <div className="flex justify-between items-center text-white my-5">
         <h1 className='font-normal text-2xl'>{cate === 'tv' ? 'TV' : 'Movie'} {type === 'top_rated' ? 'top rate' : type}</h1>
         <Link to={`/movie/${type}`}>
-          <ButtonCustom content='View more' />
+          <ButtonCustom content='View more' className='cursor-pointer' />
         </Link>
       </div>
       <Swiper
@@ -88,4 +88,4 @@ const SliderTV = ({ type, cate }) => {
   )
 }
 
-export default SliderTV
+export default Slider

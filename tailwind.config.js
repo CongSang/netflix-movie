@@ -57,6 +57,7 @@ module.exports = {
       maxWidth: {
         "mx-8": "calc(100% - 32px)",
         "vw": "calc(100vw - 32px)",
+        "100vw": "100vw"
       },
       top: {
         "50p": '50%'

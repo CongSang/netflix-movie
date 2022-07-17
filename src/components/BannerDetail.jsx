@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import StarRatings from 'react-star-ratings'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import ButtonCustom from './Button/ButtonCustom'
+import { useStore } from '../store/stored'
+import { addMovieFavorite } from '../data/database'
 
-const BannerDetail = ({ id, media_type, data, loading, currentUser }) => {
+const BannerDetail = ({ id, media_type, data, loading, currentUser, setShowModal }) => {
+  const { favoriteList, setFavoriteList } = useStore(state => state)
+  const [loadingAddMovie, setLoadingAddMovie] = useState(false)
+
+  const handleAddToFavorites = async () => {
+    if (!currentUser) return toast.error("You are not logged in");
+
+    if (favoriteList) {
+      const movieExist = favoriteList.some((item) => item.movie.id === data.id);
+
+      if (movieExist) {
+        return toast.error("Movies already exist");
+      }
+    }
+
+    setLoadingAddMovie(true);
+    const newFavorite = await addMovieFavorite(currentUser.uid, data, media_type);
+    setFavoriteList([...favoriteList, newFavorite])
+    setLoadingAddMovie(false)
+    toast.success("Add new favorite successful!")
+  }
+
   return (
     <div
         className={`banner-detail relative flex justify-center items-center bg-cover bg-no-repeat bg-top-center md:aspect-2/1 aspect-16/10 ${loading ? "animate-loading" : ""}`}
@@ -36,10 +60,13 @@ const BannerDetail = ({ id, media_type, data, loading, currentUser }) => {
               <div className="flex my-2 flex-wrap">
                 {data.genres &&
                   data.genres.map((item) => (
-                    <div className='my-3 mr-4'>
-											<ButtonCustom  
-												key={item.id}
+                    <div   
+                      key={item.id} 
+                      className='my-3 mr-4'
+                    >
+											<ButtonCustom
 												content={item.name}
+                        className='cursor-default'
 											/>
 										</div>
                   ))}
@@ -69,11 +96,16 @@ const BannerDetail = ({ id, media_type, data, loading, currentUser }) => {
                 >
                   Watch Now
                 </Link>
-                <span className="p-2 text-white bg-[#34495e] rounded-md mr-4 cursor-pointer">
+                <span 
+                  className="p-2 text-white bg-[#34495e] rounded-md mr-4 cursor-pointer"
+                  onClick={() => setShowModal(true)}>
                   Watch Trailer
                 </span>
                 {currentUser && (
-									<span className="p-2 text-white bg-[#34495e] rounded-md cursor-pointer">
+									<span 
+                    className="p-2 text-white bg-[#34495e] rounded-md cursor-pointer"
+                    onClick={handleAddToFavorites}
+                  >
 										Add Favorite
 									</span>
 								)}

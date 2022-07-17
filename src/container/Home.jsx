@@ -18,7 +18,7 @@ import ViewMore from './ViewMore'
 import PrivateRoute from './PrivateRoute'
 
 const Home = () => {
-  const currentUser = useStore(state => state.currentUser)
+  const { currentUser } = useStore(state => state)
   const location = useLocation()
 
   useEffect(() => {
