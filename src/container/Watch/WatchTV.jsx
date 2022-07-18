@@ -6,6 +6,7 @@ import Title from '../../components/Title'
 import EmbedVideoTV from '../../components/TV/EmbedVideoTV'
 import SeasonItem from '../../components/TV/SeasonItem'
 import TVInfo from '../../components/TV/TVInfo'
+import Comment from '../../components/Comment/Comment'
 
 const WatchTV = () => {
   const { esp, season, id } = useParams();
@@ -63,6 +64,7 @@ const WatchTV = () => {
         <div className="lg:w-70p w-full">
           <EmbedVideoTV id={id} espTv={espTv} seasonTv={seasonTv} />
           <TVInfo nameTv={nameTv} espCurrent={espCurrent} />
+          <Comment movieId={id} />
         </div>
         <div className="lg:w-28p w-full">
           {seasonData.map((item) => {

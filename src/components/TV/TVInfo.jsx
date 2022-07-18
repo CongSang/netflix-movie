@@ -2,7 +2,7 @@ import React from 'react'
 
 const TVInfo = ({ nameTv, espCurrent }) => {
   return (
-    <div className="mt-4 text-white">
+    <div className="my-6 text-white">
       <h1 className="text-secondaryColor-100 text-2xl font-semibold">{nameTv}</h1>
       <p className="mt-2">
         Season {espCurrent && espCurrent?.season_number} | Episode{" "}

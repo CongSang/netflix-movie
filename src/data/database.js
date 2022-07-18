@@ -64,3 +64,31 @@ export const deleteFavoriteMovie = async (data) => {
     return toast.error(error.message)
   }
 }
+
+export const postComment = async (newComment) => {
+  try {
+    const res = await addDoc(collection(db, "comments"), newComment)
+
+    return {
+      ...newComment,
+      id: res.id,
+    }
+  } catch (error) {
+    return toast.error(error.message)
+  }
+}
+
+export const fetchComment = async (id) => {
+  try {
+    const q = query(collection(db, "comments"), where("movieId", "==", id))
+    const querySnapshot = await getDocs(q)
+    const commentList = []
+    querySnapshot.forEach((doc) => {
+      commentList.push({ ...doc.data(), id: doc.id })
+    });
+    return commentList
+  } catch (error) {
+    console.log(error)
+    return toast.error(error.message)
+  }
+}

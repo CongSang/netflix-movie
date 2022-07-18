@@ -2,7 +2,7 @@
 
 A website for watching movie
 
-Live demo: [https://netflix-hncs.netlify.app/](https://netflix-hncs.netlify.app/)
+Live demo: [https://netflix-cs.netlify.app/](https://netflix-cs.netlify.app/)
 
 ### Features
 
@@ -11,6 +11,7 @@ Live demo: [https://netflix-hncs.netlify.app/](https://netflix-hncs.netlify.app/
 - Search films by search term
 - Recently viewed
 - Add and delete favorite movies
+- Comments
 
 ### Clone project
 
@@ -19,9 +20,11 @@ Live demo: [https://netflix-hncs.netlify.app/](https://netflix-hncs.netlify.app/
 
 ### Preview
 
-![Preview 1](https://res.cloudinary.com/dynupxxry/image/upload/v1657818043/netflix/login_mg2q4o.png)
-![Preview 2](https://res.cloudinary.com/dynupxxry/image/upload/v1657818115/netflix/home_xqnds9.png)
-![Preview 3](https://res.cloudinary.com/dynupxxry/image/upload/v1657818176/netflix/watch_cc0lcd.png)
+![Preview 1](https://res.cloudinary.com/dynupxxry/image/upload/v1658152456/netflix/login_eepdnw.png)
+
+![Preview 2](https://res.cloudinary.com/dynupxxry/image/upload/v1658152466/netflix/home_otduwm.png)
+
+![Preview 3](https://res.cloudinary.com/dynupxxry/image/upload/v1658152471/netflix/watch_hdrzcr.png)
 
 ### Technology
 

@@ -6,6 +6,7 @@ import Title from '../../components/Title'
 import EmbedVideoMovie from '../../components/Movie/EmbedVideoMovie'
 import MovieInfo from '../../components/Movie/MovieInfo'
 import SimilarWatch from '../../components/Similar/SimilarWatch'
+import Comment from '../../components/Comment/Comment'
 
 const WatchMovie = () => {
   const { id } = useParams();
@@ -43,6 +44,7 @@ const WatchMovie = () => {
         <div className="lg:w-70p w-full">
           <EmbedVideoMovie id={id} />
           <MovieInfo data={info} />
+          <Comment movieId={id} />
         </div>
         <div className="lg:w-28p w-full">
           <h1 className="text-white text-lg">Similar</h1>
